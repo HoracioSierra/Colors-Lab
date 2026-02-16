@@ -1,0 +1,6 @@
+<?php
+$DB_HOST = "localhost";
+$DB_USER = "TheBeast";
+$DB_PASS = "WeLoveCOP4331";
+$DB_NAME = "COP4331";
+?>
