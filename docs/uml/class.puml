@@ -1,0 +1,63 @@
+@startuml
+class ColorApp <<client>> {
+  - userId : int
+  - firstName : string
+  - lastName : string
+  - urlBase : string
+  + doLogin() : void
+  + saveCookie() : void
+  + readCookie() : void
+  + doLogout() : void
+  + addColor() : void
+  + searchColor() : void
+}
+
+class Login <<server>> {
+  - inData : array
+  + getRequestInfo() : array
+  + sendResultInfoAsJson() : void
+  + returnWithError(err) : void
+  + returnWithInfo(fn, ln, id) : void
+}
+
+class AddColor <<server>> {
+  - inData : array
+  + getRequestInfo() : array
+  + sendResultInfoAsJson() : void
+  + returnWithError(err) : void
+  + insertColor(userId, name) : void
+}
+
+class SearchColors <<server>> {
+  - inData : array
+  + getRequestInfo() : array
+  + sendResultInfoAsJson() : void
+  + returnWithError(err) : void
+  + returnWithInfo(results) : void
+  + searchByName(name, uid) : array
+}
+
+class Users <<DB>> {
+  PK ID : int
+  FirstName : varchar(50)
+  LastName : varchar(50)
+  Login : varchar(50)
+  Password : varchar(50)
+}
+
+class Colors <<DB>> {
+  PK ID : int
+  Name : varchar(50)
+  FK UserID : int
+}
+
+ColorApp ..> Login : <<calls POST>>
+ColorApp ..> AddColor : <<calls POST>>
+ColorApp ..> SearchColors : <<calls POST>>
+
+Login ..> Users : <<reads>>
+AddColor ..> Colors : <<writes>>
+SearchColors ..> Colors : <<reads>>
+
+Users "1" --> "0..*" Colors : owns
+@enduml
