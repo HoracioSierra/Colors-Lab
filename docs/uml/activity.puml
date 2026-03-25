@@ -1,0 +1,36 @@
+@startuml
+start
+:Enter login and password;
+:Hash password with MD5;
+:POST credentials to Login.php;
+
+if (User found in DB?) then (yes)
+  :Save session cookie\n(firstName, lastName, userId, 20 min expiry);
+  :Redirect to color.html;
+  :Read session cookie;
+
+  while (User continues using color page?) is (yes)
+    if (Choose action) then (Search)
+      :Enter search text;
+      :POST to SearchColors.php;
+      if (Results found?) then (yes)
+        :Display color results list;
+      else (no)
+        :Show "No Records Found";
+      endif
+    else (Add)
+      :Enter new color;
+      :POST to AddColor.php;
+      :Show "Color has been added";
+    endif
+  endwhile (logout)
+
+  :Click Log Out;
+  :Clear cookie;
+  :Redirect to index.html;
+
+else (no)
+  :Show "User/Password combination incorrect";
+endif
+stop
+@enduml
