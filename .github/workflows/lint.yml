@@ -27,4 +27,4 @@ jobs:
         run: npx stylelint css/styles.css
 
       - name: Lint JS
-        run: npx eslint js/code.js
+        run: npx eslint jss/code.js
