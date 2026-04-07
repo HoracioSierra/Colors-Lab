@@ -24,7 +24,7 @@ jobs:
         run: npx htmlhint index.html
 
       - name: Lint CSS
-        run: npx stylelint styles.css
+        run: npx stylelint css/styles.css
 
       - name: Lint JS
-        run: npx eslint code.js
+        run: npx eslint js/code.js
