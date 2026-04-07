@@ -9,8 +9,13 @@ module.exports = [
       ecmaVersion: 2021,
       sourceType: "script",
       globals: {
-        ...globals.browser
+        ...globals.browser,
+        md5: "readonly"
       }
+    },
+    rules: {
+      "no-unused-vars": "off",
+      "no-dupe-keys": "off"
     }
   }
 ];
