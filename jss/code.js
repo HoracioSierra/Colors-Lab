@@ -195,9 +195,12 @@ function buildColorPayload(userId, colorName) {
   };
 }
 
+/* global module */
+
 if (typeof module !== 'undefined') {
   module.exports = {
-    isValidColorName,
-    buildColorPayload
+    isValidColorName: isValidColorName,
+    buildColorPayload: buildColorPayload
   };
+}
 }
