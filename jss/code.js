@@ -203,4 +203,3 @@ if (typeof module !== 'undefined') {
     buildColorPayload: buildColorPayload
   };
 }
-}
