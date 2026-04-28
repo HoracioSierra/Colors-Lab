@@ -17,8 +17,8 @@ jobs:
         with:
           node-version: 20
 
-      - name: Install linters
-        run: npm install --no-save eslint @eslint/js globals stylelint stylelint-config-standard htmlhint
+      - name: Install Linters and Jest
+        run: npm install --no-save eslint @eslint/js globals stylelint stylelint-config-standard htmlhint jest
 
       - name: Lint HTML
         run: npx htmlhint index.html
@@ -28,3 +28,6 @@ jobs:
 
       - name: Lint JS
         run: npx eslint jss/code.js
+
+      - name: Run Jest Tests
+        run: npx jest
