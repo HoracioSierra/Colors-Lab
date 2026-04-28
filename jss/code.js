@@ -182,4 +182,24 @@ function searchColor()
 		document.getElementById("colorSearchResult").innerHTML = err.message;
 	}
 	
+	
+}
+function isValidColorName(colorName) {
+  return colorName.trim().length > 0;
+}
+
+function buildColorPayload(userId, colorName) {
+  return {
+    userId: userId,
+    color: colorName.trim()
+  };
+}
+
+/* global module */
+
+if (typeof module !== 'undefined') {
+  module.exports = {
+    isValidColorName: isValidColorName,
+    buildColorPayload: buildColorPayload
+  };
 }
